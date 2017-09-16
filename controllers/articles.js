@@ -7,7 +7,7 @@ exports.get = function(req, res, next) {
 	var articlesPerPage = parseInt(req.query.count) || 25;
 
 	Article
-	.find({})
+	.find({isRemoved: false})
 	.limit(articlesPerPage)
 	.skip(currentPage * articlesPerPage)
 	.sort({createdAt: -1})
@@ -28,7 +28,7 @@ exports.delete = function(req, res, next) {
 	var id = req.params.id;
 
 	Article
-	.findByIdAndRemove(id)
+	.findByIdAndUpdate(id, { $set: { isRemoved: true }}, { new: true })
 	.exec(function(err, data){
 		if(err){
 			console.error(err.message);

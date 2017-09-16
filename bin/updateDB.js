@@ -21,11 +21,9 @@ connect()
   .on('disconnected', connect)
   .once('open', listen);
 
-/*Update database every 30 minute.*/
+/*Update database every hour.*/
 
-cron.schedule('*/30 * * * *', updateDB);
-
-updateDB();
+cron.schedule('*/60 * * * *', updateDB);
 
 function updateDB(){
 

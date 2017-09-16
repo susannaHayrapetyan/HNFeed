@@ -22,6 +22,10 @@ var ArticleSchema = new Schema({
 	createdAt: { 
 		type : Date, 
 		default : null 
+	},
+	isRemoved: { 
+		type : Boolean, 
+		default : false 
 	}
 });
 
