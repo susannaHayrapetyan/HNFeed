@@ -4,7 +4,7 @@
   "private": false,
   "scripts": {
     "prestart": "node ./bin/initDB",
-    "start": "npm-run-all --parallel www update open",
+    "start": "npm-run-all --parallel www update",
     "www": "node ./bin/www",
     "update": "node ./bin/updateDB",
     "open": "start http://localhost:3000"
