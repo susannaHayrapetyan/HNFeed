@@ -35,7 +35,7 @@ ArticleSchema.index({ createdAt: -1 });
 
 /*It needs the index which will be responsible for uniqueness of articles, to avoid from duplicates. */
 
-ArticleSchema.index({author: 1, createdAt: 1, title: 1}, {unique: true, dropDups: true});
+ArticleSchema.index({author: 1, createdAt: 1, title: 1}, {unique: true});
 
 /**
 * Validate and save multiple articles received from API.
@@ -48,7 +48,7 @@ ArticleSchema.statics.insertManyFromAPI = function (articles, next) {
 	var i, insertedData = [];
 
 	for(i in articles){
-		if(!articles[i].story_title && articles[i].title)
+		if(!articles[i].story_title && !articles[i].title)
 			continue;
 
 		insertedData.push({
@@ -62,16 +62,16 @@ ArticleSchema.statics.insertManyFromAPI = function (articles, next) {
 	this
 	.model('Article')
 	.insertMany(insertedData, {ordered: false})
-	.then(function(){
-
-		next();
-	})
-	.catch(function(err) {
-        if(err && err.code !== 11000)
-			console.error(error.message);
+	.then(function(data) {
 
 		next();
     })
+	.catch(function(err) {
+		if(err && err.code !== 11000)
+			console.error(error.message);
+
+		next();
+    });
 }
 
 module.exports = mongoose.model('Article', ArticleSchema, 'articles');

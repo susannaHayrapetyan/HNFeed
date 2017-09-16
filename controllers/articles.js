@@ -7,7 +7,7 @@ exports.get = function(req, res, next) {
 	var articlesPerPage = parseInt(req.query.count) || 25;
 
 	Article
-	.find({isRemoved: false})
+	.find({isRemoved: { $ne: true }})
 	.limit(articlesPerPage)
 	.skip(currentPage * articlesPerPage)
 	.sort({createdAt: -1})

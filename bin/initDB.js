@@ -30,6 +30,9 @@ connect()
 
   	util.getRequest(config.api.url + 'search_by_date', {qs: qs}, function(res){
 
+  		if(!res.hits.length)
+			return finishProcess();
+
 		console.log(res.hits.length, 'articles from API, page -> ' + page);
 
 		Article.insertManyFromAPI(res.hits, function(){
