@@ -1,15 +1,17 @@
 {
   "name": "hnfeed",
   "version": "0.0.0",
-  "private": true,
+  "private": false,
   "scripts": {
     "prestart": "node ./bin/initDB",
-    "start": "npm-run-all --parallel www update",
+    "start": "npm-run-all --parallel www update open",
     "www": "node ./bin/www",
-    "update": "node ./bin/updateDB"
+    "update": "node ./bin/updateDB",
+    "open": "start http://localhost:3000"
   },
   "dependencies": {
     "async": "^2.5.0",
+    "bluebird": "^3.5.0",
     "body-parser": "~1.17.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",

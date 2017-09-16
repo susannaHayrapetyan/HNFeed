@@ -1,0 +1,31 @@
+.header{
+	padding-left: 30px;
+	color: #FFFFFF;
+	background-color: #333333;
+}
+ul.articles li{
+	padding: 10px 30px;
+	background-color: #FFFFFF;
+	border: 1px solid #CCCCCC;
+}
+ul.articles li:hover{
+	background-color: #FAFAFA;
+}
+ul.articles li:hover .trash{
+	visibility: visible;
+}
+.title, .time{
+	color: #333;
+	font-size: 13pt;
+}
+.author{
+	color: #999;
+}
+.author::before, .author::after { 
+    content: "  -  ";
+}
+.trash, .time{
+	min-width: 60px;
+	float: right;
+	padding-right: 30px;
+}

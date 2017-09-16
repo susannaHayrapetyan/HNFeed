@@ -55,12 +55,19 @@ ArticleSchema.statics.insertManyFromAPI = function (articles, next) {
 		})
 	}
 
-	this.model('Article').insertMany(insertedData, {ordered: false}, function(error){
-		if(error && error.code !== 11000)
-			console.error(error);
+	this
+	.model('Article')
+	.insertMany(insertedData, {ordered: false})
+	.then(function(){
 
 		next();
 	})
+	.catch(function(err) {
+        if(err && err.code !== 11000)
+			console.error(error.message);
+
+		next();
+    })
 }
 
 module.exports = mongoose.model('Article', ArticleSchema, 'articles');

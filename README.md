@@ -1,5 +1,13 @@
 # HNFeed
 
-> I cannot get more than 1000 articles from API you have provided. I have got message 
-"you can only fetch the 1000 hits for this query. You can extend the number of hits returned via the paginationLimitedTo index parameter or use the browse method. You can read our FAQ for more details about browsing: https://www.algolia.com/doc/faq/index-configuration/how-can-i-retrieve-all-the-records-in-my-index"
-Documentation is not working for now. You cannot fill database with all articles. I'm sorry.
+Clone the repo: ```git clone https://github.com/susannaHayrapetyan/HNFeed.git```
+
+Go to directory: ```cd HNFeed```
+
+Run ```npm install``` to install node dependencies.
+
+Run ```bower install``` to install bower dependencies.
+
+Make sure you have started MongoDB on your local computer. 
+
+Run ```npm start``` and it will fill your database with Hacker News from Algolia API, will update database every 30 minute and open application to view articles or remove them from database.

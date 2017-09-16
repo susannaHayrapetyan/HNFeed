@@ -3,6 +3,8 @@
 var mongoose = require('mongoose');
 var async = require('async');
 
+mongoose.Promise = require('bluebird');
+
 var config = require('../config/config')
 var util = require('../config/util')
 var Article = require('../model/article');
